@@ -73,7 +73,7 @@ void InsertionSort(int numbers[], int count)
 	{
 		int j = i;
 		int target = numbers[i];
-		while (--j >= 0 && numbers[i] < numbers[j])
+		while (--j >= 0 && target < numbers[j])
 		{
 			numbers[j + 1] = numbers[j];
 			numbers[j] = target;
@@ -82,7 +82,7 @@ void InsertionSort(int numbers[], int count)
 }
 //-----------------------------------------------------------------------
 
-//MergeSort
+//MergeSort - 폰 노이만
 
 void Merge(int numbers[], int start, int half, int end,int temp[])
 {
@@ -134,6 +134,41 @@ void MergeSort(int numbers[], int start, int end, int temp[])
 
 	// Merge
 	Merge(numbers, start, half, end, temp);
+}
+
+// Quick Sort - Tony Hoare
+// MergeSort의 단점(temp 메모리)을 보완하는 정도
+void QuickSort(int numbers[], int start, int end)
+{
+	int i = start;
+	int j = end;
+	int pivot = numbers[(start + end) / 2];
+	do
+	{
+		while (numbers[i] < pivot)
+		{
+			i++;
+		}
+		while (numbers[j] > pivot)
+		{
+			j--;
+		}
+
+		if (i <= j)
+		{
+			int temp = numbers[i];
+			numbers[i] = numbers[j];
+			numbers[j] = temp;
+			i++;
+			j++;
+		}
+	}while (i <= j);
+
+	if (start < j)
+	{
+		QuickSort(numbers, start, j);
+		QuickSort(numbers, i, end);
+	}
 }
 
 
