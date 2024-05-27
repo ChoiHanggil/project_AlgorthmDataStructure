@@ -101,15 +101,17 @@ void Merge(int numbers[], int start, int half, int end,int temp[])
 			temp[tempIndex++] = numbers[j++];
 		}
 	}
+	//왼쪽 남은 것
 	while (i <= half)
 	{
 		temp[tempIndex++] = numbers[i++];
 	}
+	//오른쪽 남은 것
 	while (j <= end)
 	{
 		temp[tempIndex++] = numbers[j++];
 	}
-
+	//복사
 	tempIndex = 0;
 	for (int i = start; i <= end; i++)
 	{
