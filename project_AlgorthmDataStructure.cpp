@@ -160,13 +160,17 @@ void QuickSort(int numbers[], int start, int end)
 			numbers[i] = numbers[j];
 			numbers[j] = temp;
 			i++;
-			j++;
+			j--;
 		}
 	}while (i <= j);
 
 	if (start < j)
 	{
 		QuickSort(numbers, start, j);
+		
+	}
+	if (i < end)
+	{
 		QuickSort(numbers, i, end);
 	}
 }
@@ -184,11 +188,13 @@ void PrintArray(int numbers[], int count)
 int main()
 {
 	const int SIZE_ARRAY{ 10 };
-	int scores[SIZE_ARRAY]{ 20,10,30,50,40,60,70,90,80,100 };
+	int scores[SIZE_ARRAY]{ 100,90,80,70,60,50,40,30,20,10 };
 	int temp[SIZE_ARRAY]{};
 
-	SequentialSort(scores, SIZE_ARRAY, Ascending);
-	MergeSort(scores, 0, SIZE_ARRAY - 1, temp);
+	//SequentialSort(scores, SIZE_ARRAY, Ascending);
+	//MergeSort(scores, 0, SIZE_ARRAY - 1, temp);
+
+	QuickSort(scores, 0, 9);
 
 	PrintArray(scores, SIZE_ARRAY);
 
